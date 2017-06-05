@@ -1,0 +1,28 @@
+package com.test.Test;
+import java.io.Serializable;
+
+public class Test implements Serializable {
+
+private static final long serialVersionUID = 1L;
+public String assetid;
+public String asset_desc;
+public String gruopid;
+public String getAssetid() {
+    return assetid;
+}
+public void setAssetid(String assetid) {
+    this.assetid = assetid;
+}
+public String getAsset_desc() {
+    return asset_desc;
+}
+public void setAsset_desc(String Asset_desc) {
+    this.asset_desc = asset_desc;
+}
+public String getGroupid() {
+    return groupid;
+}
+public void setGroupid(String groupid) {
+    this.groupid = groupid;
+}   
+}
