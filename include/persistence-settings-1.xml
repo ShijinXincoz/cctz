@@ -1,0 +1,17 @@
+<persistence keyspace="sam" table="user_permission">
+	<keyPersistence class="com.test.Test" strategy="POJO">
+		<partitionKey>
+			<!-- Mapping from POJO field to Cassandra table column -->
+			<field name="assetid" column="assetid" />
+
+		</partitionKey>
+	</keyPersistence>
+	<valuePersistence class="com.test.Test" strategy="POJO">
+		<!-- Mapping from POJO field to Cassandra table column -->
+		<!-- field name="companyid" column="companyid" />
+		<field name="company_name" column="company_name" /-->>
+		<field name="assetid" column="assetid" />
+		<field name="asset_desc" column="asset_desc"/>
+		<field name="groupid" column="groupid"/>
+	</valuePersistence>
+</persistence>
