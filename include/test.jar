@@ -1,28 +1,60 @@
-package com.test.Test;
+package com.test;
+
+
 import java.io.Serializable;
 
-public class Test implements Serializable {
+import org.apache.ignite.binary.BinaryObjectException;
+import org.apache.ignite.binary.BinaryReader;
+import org.apache.ignite.binary.BinaryWriter;
+import org.apache.ignite.binary.Binarylizable;
+import org.apache.ignite.cache.query.annotations.QuerySqlField;
 
-private static final long serialVersionUID = 1L;
-public String assetid;
-public String asset_desc;
-public String gruopid;
-public String getAssetid() {
-    return assetid;
-}
-public void setAssetid(String assetid) {
-    this.assetid = assetid;
-}
-public String getAsset_desc() {
-    return asset_desc;
-}
-public void setAsset_desc(String Asset_desc) {
-    this.asset_desc = asset_desc;
-}
-public String getGroupid() {
-    return groupid;
-}
-public void setGroupid(String groupid) {
-    this.groupid = groupid;
-}   
+public class Test  implements Binarylizable ,Serializable{
+
+                /**
+                * 
+                 */
+                private static final long serialVersionUID = 1L;
+                String assetid;
+                @QuerySqlField(index = true)
+                String asset_desc;
+                
+                String groupid;
+                
+                
+                public String getGroupId() {
+                                return groupid;
+                }
+                public void setGroupId(String groupId) {
+                                this.groupid = groupId;
+                }
+                public String getAssetid() {
+                                return assetid;
+                }
+                public void setAssetid(String assetid) {
+                                this.assetid = assetid;
+                }
+                public String getAsset_desc() {
+                                return asset_desc;
+                }
+                public void setAsset_desc(String asset_desc) {
+                                this.asset_desc = asset_desc;
+                }
+                @Override
+                public void readBinary(BinaryReader reader) throws BinaryObjectException {
+                                assetid = reader.readString("assetid");
+                                asset_desc = reader.readString("asset_desc");
+                                groupid =  reader.readString("groupid");
+
+                                
+                }
+                @Override
+                public void writeBinary(BinaryWriter writer) throws BinaryObjectException {
+                                writer.writeString("assetid", assetid);
+                     writer.writeString("asset_desc", asset_desc);
+                     writer.writeString("groupid", groupid);
+                                
+                }
+                
+                                
 }
